@@ -5,8 +5,7 @@ import { userSlice } from './store/reducers/UserSlice'
 
 function App() {
   const dispatch = useAppDispatch()
-  const { increment } = userSlice.actions
-  const { count, users, isLoading, error } = useAppSelector(
+  const { users, isLoading, error } = useAppSelector(
     state => state.userReducer,
   )
 
@@ -16,8 +15,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1>{count}</h1>
-      <button onClick={() => dispatch(increment(10))}>INCREMENT</button>
       {isLoading && <h1>Идёт загрузка...</h1>}
       {error && <h1>{error}</h1>}
       {JSON.stringify(users, null, 2)}
